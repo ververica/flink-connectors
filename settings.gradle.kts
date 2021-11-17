@@ -3,7 +3,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         // needed for avro plugin
-        jcenter()
         maven(url = "https://dl.bintray.com/gradle/gradle-plugins") {
             name = "JCenter Gradle Plugins"
         }
