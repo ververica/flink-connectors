@@ -14,7 +14,7 @@ plugins {
     id("com.gradle.enterprise") version "3.0" apply false
 }
 
-if (!gradle.startParameter.isOffline) {
+if (!gradle.startParameter.isBuildScan) {
     apply(plugin = "com.gradle.enterprise")
 }
 

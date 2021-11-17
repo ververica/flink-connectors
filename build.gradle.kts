@@ -6,12 +6,12 @@ plugins {
 }
 
 val isCiServer = System.getenv().containsKey("CI")
-if (!gradle.startParameter.isOffline && isCiServer) {
+//if (!gradle.startParameter.isOffline && isCiServer) {
     configure<com.gradle.scan.plugin.BuildScanExtension> {
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
         termsOfServiceAgree = "yes"
     }
-}
+//}
 
 group = "org.apache.flink.connectors"
 version = "1.0.0-SNAPSHOT"
@@ -24,6 +24,9 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     java {
         googleJavaFormat("1.7").aosp()
     }
+}
+
+configure<CheckstyleExtension> {
 }
 
 subprojects {

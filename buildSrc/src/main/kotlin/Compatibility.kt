@@ -7,6 +7,10 @@ enum class FlinkVersion {
 /**
  * Just a sketch on how we express compatibility
  */
-fun Project.compatibleTo(vararg versions: FlinkVersion): Unit {
+fun Project.minimumFlinkVersion(version: FlinkVersion): Unit {
+    // TODO:
+}
+
+fun Project.maximumFlinkVersion(version: FlinkVersion): Unit {
     // TODO:
 }
