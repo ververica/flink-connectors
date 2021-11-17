@@ -1,0 +1,15 @@
+# Gradle
+# ------
+.gradle
+/build
+# OS X
+# ----
+.DS_Store
+# IDEA
+# ----
+.idea
+.shelf
+/*.iml
+/*.ipr
+/*.iws
+/out
