@@ -3,7 +3,7 @@ plugins {
 }
 
 val scalaVersion = "2.12"
-val flinkVersion = "1.15-SNAPSHOT"
+val flinkVersion = "1.14.0"
 dependencies {
     compileOnly("com.google.code.findbugs:jsr305:1.3.9")
     compileOnly("org.apache.flink:flink-annotations:${flinkVersion}")
