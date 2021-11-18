@@ -18,12 +18,6 @@
 
 package org.apache.flink.connector.kafka.source.metrics;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 import org.apache.flink.connector.kafka.MetricUtil;
 import org.apache.flink.connector.kafka.source.reader.KafkaSourceReader;
 import org.apache.flink.metrics.Counter;
@@ -32,12 +26,21 @@ import org.apache.flink.metrics.groups.OperatorIOMetricGroup;
 import org.apache.flink.metrics.groups.SourceReaderMetricGroup;
 import org.apache.flink.runtime.metrics.MetricNames;
 import org.apache.flink.runtime.metrics.groups.TaskIOMetricGroup;
+
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.Metric;
 import org.apache.kafka.common.MetricName;
 import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Predicate;
 
 /**
  * A collection class for handling metrics in {@link KafkaSourceReader}.

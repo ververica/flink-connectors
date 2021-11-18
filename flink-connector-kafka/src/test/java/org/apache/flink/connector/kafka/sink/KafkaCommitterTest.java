@@ -17,24 +17,26 @@
 
 package org.apache.flink.connector.kafka.sink;
 
+import org.apache.flink.connectors.test.common.junit.extensions.TestLoggerExtension;
+import org.apache.flink.util.FlinkRuntimeException;
+
+import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Properties;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-import org.apache.flink.connectors.test.common.junit.extensions.TestLoggerExtension;
-import org.apache.flink.util.FlinkRuntimeException;
-import org.apache.kafka.clients.CommonClientConfigs;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.serialization.StringSerializer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 /** Tests for {@link KafkaCommitter}. */
 @ExtendWith({TestLoggerExtension.class})

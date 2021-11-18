@@ -17,14 +17,15 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.regex.Pattern;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /** Tests for the {@link KafkaTopicsDescriptor}. */
 @RunWith(Parameterized.class)

@@ -18,13 +18,15 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import javax.annotation.Nullable;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.streaming.connectors.kafka.KafkaContextAware;
 import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import javax.annotation.Nullable;
 
 /**
  * An adapter from old style interfaces such as {@link

@@ -17,12 +17,14 @@
 
 package org.apache.flink.connector.kafka;
 
-import java.util.Map;
-import java.util.function.Predicate;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.metrics.Counter;
+
 import org.apache.kafka.common.Metric;
 import org.apache.kafka.common.MetricName;
+
+import java.util.Map;
+import java.util.function.Predicate;
 
 /** Collection of methods to interact with Kafka's client metric system. */
 @Internal

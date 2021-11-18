@@ -18,10 +18,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
@@ -32,7 +28,14 @@ import org.apache.flink.types.DeserializationException;
 import org.apache.flink.types.RowKind;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.Preconditions;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import javax.annotation.Nullable;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /** A specific {@link KafkaSerializationSchema} for {@link KafkaDynamicSource}. */
 class DynamicKafkaDeserializationSchema implements KafkaDeserializationSchema<RowData> {

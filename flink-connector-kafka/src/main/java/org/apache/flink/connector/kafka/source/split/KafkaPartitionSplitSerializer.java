@@ -18,13 +18,15 @@
 
 package org.apache.flink.connector.kafka.source.split;
 
+import org.apache.flink.core.io.SimpleVersionedSerializer;
+
+import org.apache.kafka.common.TopicPartition;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import org.apache.flink.core.io.SimpleVersionedSerializer;
-import org.apache.kafka.common.TopicPartition;
 
 /**
  * The {@link org.apache.flink.core.io.SimpleVersionedSerializer serializer} for {@link

@@ -18,12 +18,13 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.Collections;
-import java.util.List;
 import org.apache.flink.api.common.state.CheckpointListener;
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;
 import org.apache.flink.util.SerializableObject;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A Flink source that servers integers, but it completes only after a completed checkpoint after

@@ -17,9 +17,11 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import java.io.Serializable;
 import org.apache.flink.annotation.Internal;
+
 import org.apache.kafka.common.Node;
+
+import java.io.Serializable;
 
 /**
  * Serializable Topic Partition info with leader Node information. This class is used at runtime.

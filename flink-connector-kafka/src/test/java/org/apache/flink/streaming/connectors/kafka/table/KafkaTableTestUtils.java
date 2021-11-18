@@ -18,8 +18,13 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import org.apache.flink.table.api.Table;
+import org.apache.flink.table.api.TableResult;
+import org.apache.flink.table.planner.factories.TestValuesTableFactory;
+import org.apache.flink.table.utils.TableTestMatchers;
+import org.apache.flink.types.Row;
+import org.apache.flink.types.RowKind;
+import org.apache.flink.util.CloseableIterator;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,13 +39,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import org.apache.flink.table.api.Table;
-import org.apache.flink.table.api.TableResult;
-import org.apache.flink.table.planner.factories.TestValuesTableFactory;
-import org.apache.flink.table.utils.TableTestMatchers;
-import org.apache.flink.types.Row;
-import org.apache.flink.types.RowKind;
-import org.apache.flink.util.CloseableIterator;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /** Utils for kafka table tests. */
 public class KafkaTableTestUtils {

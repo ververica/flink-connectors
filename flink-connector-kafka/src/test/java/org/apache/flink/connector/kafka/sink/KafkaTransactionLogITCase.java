@@ -17,23 +17,9 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.CompleteAbort;
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.CompleteCommit;
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.Empty;
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.Ongoing;
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.PrepareAbort;
-import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.PrepareCommit;
-import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
-import static org.apache.flink.util.DockerImageVersions.KAFKA;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.function.Consumer;
 import org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionRecord;
 import org.apache.flink.util.TestLogger;
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -46,6 +32,22 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.KafkaContainer;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.function.Consumer;
+
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.CompleteAbort;
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.CompleteCommit;
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.Empty;
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.Ongoing;
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.PrepareAbort;
+import static org.apache.flink.connector.kafka.sink.KafkaTransactionLog.TransactionState.PrepareCommit;
+import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
+import static org.apache.flink.util.DockerImageVersions.KAFKA;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /** Tests for {@link KafkaTransactionLog} to retrieve abortable Kafka transactions. */
 public class KafkaTransactionLogITCase extends TestLogger {

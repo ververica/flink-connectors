@@ -17,7 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import java.util.Properties;
 import org.apache.flink.annotation.Experimental;
 import org.apache.flink.api.common.operators.Keys;
 import org.apache.flink.api.common.serialization.TypeInformationSerializationSchema;
@@ -39,6 +38,8 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.streaming.util.keys.KeySelectorUtil;
 import org.apache.flink.util.Preconditions;
 import org.apache.flink.util.PropertiesUtil;
+
+import java.util.Properties;
 
 /**
  * {@link FlinkKafkaShuffle} uses Kafka as a message bus to shuffle and persist data at the same

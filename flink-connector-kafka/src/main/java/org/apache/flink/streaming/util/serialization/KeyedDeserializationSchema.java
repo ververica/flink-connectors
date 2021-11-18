@@ -17,10 +17,12 @@
 
 package org.apache.flink.streaming.util.serialization;
 
-import java.io.IOException;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.io.IOException;
 
 /**
  * The deserialization schema describes how to turn the byte key / value messages delivered by

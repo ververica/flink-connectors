@@ -18,7 +18,11 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.initializer;
 
-import static org.apache.flink.util.Preconditions.checkState;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.OffsetResetStrategy;
+import org.apache.kafka.common.TopicPartition;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,10 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.OffsetResetStrategy;
-import org.apache.kafka.common.TopicPartition;
+
+import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * An implementation of {@link OffsetsInitializer} which initializes the offsets of the partition

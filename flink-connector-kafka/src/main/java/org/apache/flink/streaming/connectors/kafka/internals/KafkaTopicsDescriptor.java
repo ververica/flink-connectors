@@ -18,13 +18,15 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.apache.flink.util.Preconditions.checkArgument;
+import org.apache.flink.annotation.Internal;
+
+import javax.annotation.Nullable;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.flink.annotation.Internal;
+
+import static org.apache.flink.util.Preconditions.checkArgument;
 
 /**
  * A Kafka Topics Descriptor describes how the consumer subscribes to Kafka topics - either a fixed

@@ -17,9 +17,10 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.connector.kafka.sink.KafkaUtil.drainAllRecordsFromTopic;
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.kafka.common.internals.Topic.TRANSACTION_STATE_TOPIC_NAME;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.KafkaException;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -31,10 +32,10 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.KafkaException;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+
+import static org.apache.flink.connector.kafka.sink.KafkaUtil.drainAllRecordsFromTopic;
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.kafka.common.internals.Topic.TRANSACTION_STATE_TOPIC_NAME;
 
 /**
  * This class is responsible to provide the format of the used transationalIds and in case of an

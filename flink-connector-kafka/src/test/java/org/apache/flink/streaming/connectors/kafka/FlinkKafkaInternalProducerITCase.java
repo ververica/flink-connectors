@@ -18,16 +18,11 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import java.time.Duration;
-import java.util.Collections;
-import java.util.Properties;
-import java.util.UUID;
-import kafka.server.KafkaServer;
-import org.apache.flink.shaded.guava30.com.google.common.collect.Iterables;
 import org.apache.flink.streaming.connectors.kafka.internals.FlinkKafkaInternalProducer;
+
+import org.apache.flink.shaded.guava30.com.google.common.collect.Iterables;
+
+import kafka.server.KafkaServer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -38,6 +33,14 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.time.Duration;
+import java.util.Collections;
+import java.util.Properties;
+import java.util.UUID;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /** Tests for our own {@link FlinkKafkaInternalProducer}. */
 @SuppressWarnings("serial")

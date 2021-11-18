@@ -17,11 +17,14 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.io.Serializable;
-import javax.annotation.Nullable;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.serialization.SerializationSchema;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import javax.annotation.Nullable;
+
+import java.io.Serializable;
 
 /**
  * A {@link KafkaSerializationSchema} defines how to serialize values of type {@code T} into {@link

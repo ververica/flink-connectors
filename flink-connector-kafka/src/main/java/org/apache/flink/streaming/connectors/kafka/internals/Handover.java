@@ -18,14 +18,17 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-
-import java.io.Closeable;
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.ThreadSafe;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.util.ExceptionUtils;
+
 import org.apache.kafka.clients.consumer.ConsumerRecords;
+
+import javax.annotation.Nonnull;
+import javax.annotation.concurrent.ThreadSafe;
+
+import java.io.Closeable;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * The Handover is a utility to hand over data (a buffer of records) and exception from a

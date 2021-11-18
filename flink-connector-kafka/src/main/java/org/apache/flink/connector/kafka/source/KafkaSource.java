@@ -18,12 +18,6 @@
 
 package org.apache.flink.connector.kafka.source;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Properties;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 import org.apache.flink.annotation.VisibleForTesting;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -54,6 +48,14 @@ import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplitSerializ
 import org.apache.flink.core.io.SimpleVersionedSerializer;
 import org.apache.flink.metrics.MetricGroup;
 import org.apache.flink.util.UserCodeClassLoader;
+
+import javax.annotation.Nullable;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Properties;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * The Source implementation of Kafka. Please use a {@link KafkaSourceBuilder} to construct a {@link

@@ -17,11 +17,6 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.function.Supplier;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.connector.sink.Committer;
 import org.apache.flink.api.connector.sink.GlobalCommitter;
@@ -31,6 +26,12 @@ import org.apache.flink.api.connector.sink.SinkWriter;
 import org.apache.flink.connector.base.DeliveryGuarantee;
 import org.apache.flink.core.io.SimpleVersionedSerializer;
 import org.apache.flink.metrics.MetricGroup;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.function.Supplier;
 
 /**
  * Flink Sink to produce data into a Kafka topic. The sink supports all delivery guarantees

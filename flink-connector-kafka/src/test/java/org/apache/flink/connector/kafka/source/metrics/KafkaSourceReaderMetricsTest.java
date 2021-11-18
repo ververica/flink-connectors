@@ -18,19 +18,21 @@
 
 package org.apache.flink.connector.kafka.source.metrics;
 
+import org.apache.flink.metrics.Counter;
+import org.apache.flink.metrics.Gauge;
+import org.apache.flink.metrics.testutils.MetricListener;
+import org.apache.flink.runtime.metrics.groups.InternalSourceReaderMetricGroup;
+
+import org.apache.kafka.common.TopicPartition;
+import org.junit.Test;
+
+import java.util.Optional;
+
 import static org.apache.flink.connector.kafka.source.metrics.KafkaSourceReaderMetrics.PARTITION_GROUP;
 import static org.apache.flink.connector.kafka.source.metrics.KafkaSourceReaderMetrics.TOPIC_GROUP;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Optional;
-import org.apache.flink.metrics.Counter;
-import org.apache.flink.metrics.Gauge;
-import org.apache.flink.metrics.testutils.MetricListener;
-import org.apache.flink.runtime.metrics.groups.InternalSourceReaderMetricGroup;
-import org.apache.kafka.common.TopicPartition;
-import org.junit.Test;
 
 /** Unit test for {@link KafkaSourceReaderMetrics}. */
 public class KafkaSourceReaderMetricsTest {

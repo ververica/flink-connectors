@@ -18,13 +18,15 @@
 
 package org.apache.flink.connector.kafka.source.testutils;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Properties;
 import org.apache.flink.connectors.test.common.external.SourceSplitDataWriter;
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Properties;
 
 /** Source split data writer for writing test data into Kafka topic partitions. */
 public class KafkaPartitionDataWriter implements SourceSplitDataWriter<String> {

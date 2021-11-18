@@ -18,17 +18,19 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Properties;
 import org.apache.flink.api.common.typeutils.base.IntSerializer;
 import org.apache.flink.runtime.jobgraph.OperatorID;
 import org.apache.flink.streaming.api.operators.StreamSink;
 import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
 import org.apache.flink.testutils.migration.MigrationVersion;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Properties;
 
 /**
  * Tests for checking whether {@link FlinkKafkaProducer} can restore from snapshots that were done

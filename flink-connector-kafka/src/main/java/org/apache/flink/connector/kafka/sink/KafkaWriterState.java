@@ -17,9 +17,9 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-
 import java.util.Objects;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 class KafkaWriterState {
     private final String transactionalIdPrefix;

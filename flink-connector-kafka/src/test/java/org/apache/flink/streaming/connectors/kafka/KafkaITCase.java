@@ -17,10 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.Optional;
-import javax.annotation.Nullable;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.api.common.serialization.TypeInformationSerializationSchema;
@@ -40,9 +36,16 @@ import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.connectors.kafka.internals.KeyedSerializationSchemaWrapper;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
 import org.apache.flink.streaming.runtime.streamrecord.StreamRecord;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import javax.annotation.Nullable;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Optional;
 
 /** IT cases for Kafka. */
 public class KafkaITCase extends KafkaConsumerTestBase {

@@ -18,12 +18,15 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.collectRows;
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.comparedWithKeyAndOrder;
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.waitingExpectedResults;
-import static org.apache.flink.table.planner.factories.TestValuesTableFactory.changelogRow;
-import static org.apache.flink.table.utils.TableTestMatchers.deepEqualTo;
-import static org.junit.Assert.assertThat;
+import org.apache.flink.table.api.TableResult;
+import org.apache.flink.table.planner.factories.TestValuesTableFactory;
+import org.apache.flink.table.utils.LegacyRowResource;
+import org.apache.flink.types.Row;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -33,14 +36,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.apache.flink.table.api.TableResult;
-import org.apache.flink.table.planner.factories.TestValuesTableFactory;
-import org.apache.flink.table.utils.LegacyRowResource;
-import org.apache.flink.types.Row;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.collectRows;
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.comparedWithKeyAndOrder;
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.waitingExpectedResults;
+import static org.apache.flink.table.planner.factories.TestValuesTableFactory.changelogRow;
+import static org.apache.flink.table.utils.TableTestMatchers.deepEqualTo;
+import static org.junit.Assert.assertThat;
 
 /** Upsert-kafka IT cases. */
 @RunWith(Parameterized.class)

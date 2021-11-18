@@ -18,8 +18,9 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.initializer;
 
-import java.util.Properties;
 import org.apache.flink.annotation.Internal;
+
+import java.util.Properties;
 
 /**
  * Interface for validating {@link OffsetsInitializer} with properties from {@link

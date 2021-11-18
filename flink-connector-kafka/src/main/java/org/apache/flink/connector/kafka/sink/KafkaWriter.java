@@ -17,19 +17,6 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.IOUtils.closeAll;
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
-
-import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.function.Consumer;
 import org.apache.flink.annotation.VisibleForTesting;
 import org.apache.flink.api.common.operators.MailboxExecutor;
 import org.apache.flink.api.common.serialization.SerializationSchema;
@@ -41,11 +28,13 @@ import org.apache.flink.metrics.Counter;
 import org.apache.flink.metrics.MetricGroup;
 import org.apache.flink.metrics.groups.SinkWriterMetricGroup;
 import org.apache.flink.runtime.checkpoint.CheckpointIDCounter;
+import org.apache.flink.streaming.connectors.kafka.internals.metrics.KafkaMetricMutableWrapper;
+import org.apache.flink.util.FlinkRuntimeException;
+
 import org.apache.flink.shaded.guava30.com.google.common.collect.ImmutableList;
 import org.apache.flink.shaded.guava30.com.google.common.collect.Lists;
 import org.apache.flink.shaded.guava30.com.google.common.io.Closer;
-import org.apache.flink.streaming.connectors.kafka.internals.metrics.KafkaMetricMutableWrapper;
-import org.apache.flink.util.FlinkRuntimeException;
+
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -55,6 +44,20 @@ import org.apache.kafka.common.errors.ProducerFencedException;
 import org.apache.kafka.common.errors.UnknownProducerIdException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.function.Consumer;
+
+import static org.apache.flink.util.IOUtils.closeAll;
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * This class is responsible to write records in a Kafka topic and to handle the different delivery

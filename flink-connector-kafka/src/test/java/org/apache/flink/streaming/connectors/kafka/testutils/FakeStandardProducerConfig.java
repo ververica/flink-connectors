@@ -18,8 +18,9 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.Properties;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
+
+import java.util.Properties;
 
 /** Test configuration for a kafka producer. */
 public class FakeStandardProducerConfig {

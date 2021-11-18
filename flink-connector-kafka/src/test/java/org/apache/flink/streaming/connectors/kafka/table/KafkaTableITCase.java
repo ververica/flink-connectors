@@ -18,13 +18,19 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.collectRows;
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.readLines;
-import static org.apache.flink.table.api.config.ExecutionConfigOptions.TABLE_EXEC_SOURCE_IDLE_TIMEOUT;
-import static org.apache.flink.table.utils.TableTestMatchers.deepEqualTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import org.apache.flink.core.execution.JobClient;
+import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.functions.sink.SinkFunction;
+import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
+import org.apache.flink.table.api.TableResult;
+import org.apache.flink.table.data.RowData;
+import org.apache.flink.test.util.SuccessException;
+import org.apache.flink.types.Row;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -38,18 +44,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import org.apache.flink.core.execution.JobClient;
-import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
-import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
-import org.apache.flink.table.api.TableResult;
-import org.apache.flink.table.data.RowData;
-import org.apache.flink.test.util.SuccessException;
-import org.apache.flink.types.Row;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.collectRows;
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.readLines;
+import static org.apache.flink.table.api.config.ExecutionConfigOptions.TABLE_EXEC_SOURCE_IDLE_TIMEOUT;
+import static org.apache.flink.table.utils.TableTestMatchers.deepEqualTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /** Basic IT cases for the Kafka table source and sink. */
 @RunWith(Parameterized.class)

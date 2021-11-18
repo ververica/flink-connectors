@@ -17,20 +17,23 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
+import org.apache.flink.api.common.serialization.SerializationSchema;
+import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
+
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.Configurable;
+import org.apache.kafka.common.serialization.Serializer;
+
+import javax.annotation.Nullable;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.OptionalInt;
 import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.flink.api.common.serialization.SerializationSchema;
-import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.Configurable;
-import org.apache.kafka.common.serialization.Serializer;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * Builder to construct {@link KafkaRecordSerializationSchema}.

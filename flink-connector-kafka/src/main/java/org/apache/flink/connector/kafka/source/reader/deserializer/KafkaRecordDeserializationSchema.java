@@ -18,18 +18,20 @@
 
 package org.apache.flink.connector.kafka.source.reader.deserializer;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Collections;
-import java.util.Map;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.java.typeutils.ResultTypeQueryable;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.util.Collector;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.Configurable;
 import org.apache.kafka.common.serialization.Deserializer;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.Map;
 
 /** An interface for the deserialization of Kafka records. */
 public interface KafkaRecordDeserializationSchema<T> extends Serializable, ResultTypeQueryable<T> {

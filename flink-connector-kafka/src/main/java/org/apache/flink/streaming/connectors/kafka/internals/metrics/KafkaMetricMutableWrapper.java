@@ -20,6 +20,7 @@ package org.apache.flink.streaming.connectors.kafka.internals.metrics;
 
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.metrics.Gauge;
+
 import org.apache.kafka.common.Metric;
 
 /** Gauge for getting the current value of a Kafka metric. */

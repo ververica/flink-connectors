@@ -18,12 +18,13 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.subscriber;
 
+import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.common.TopicPartition;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.common.TopicPartition;
 
 /**
  * Kafka consumer allows a few different ways to consume from the topics, including:

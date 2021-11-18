@@ -18,9 +18,10 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
+import org.apache.flink.api.common.functions.MapFunction;
+
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.flink.api.common.functions.MapFunction;
 
 /** {@link MapFunction} that verifies that he partitioning is identical. */
 public class PartitionValidatingMapper implements MapFunction<Integer, Integer> {

@@ -17,11 +17,13 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import java.io.Serializable;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.serialization.SerializationSchema;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import java.io.Serializable;
 
 /**
  * A serialization schema which defines how to convert a value of type {@code T} to {@link

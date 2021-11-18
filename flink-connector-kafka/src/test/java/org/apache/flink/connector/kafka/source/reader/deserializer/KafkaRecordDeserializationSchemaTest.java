@@ -18,23 +18,26 @@
 
 package org.apache.flink.connector.kafka.source.reader.deserializer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.flink.connector.testutils.source.deserialization.TestingDeserializationContext;
 import org.apache.flink.formats.json.JsonNodeDeserializationSchema;
+import org.apache.flink.streaming.util.serialization.JSONKeyValueDeserializationSchema;
+import org.apache.flink.util.Collector;
+
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.node.ObjectNode;
-import org.apache.flink.streaming.util.serialization.JSONKeyValueDeserializationSchema;
-import org.apache.flink.util.Collector;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /** Unit tests for KafkaRecordDeserializationSchema. */
 public class KafkaRecordDeserializationSchemaTest {

@@ -17,11 +17,11 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
-
 import java.io.Closeable;
 import java.util.function.Consumer;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 class Recyclable<T> implements Closeable {
     private T object;

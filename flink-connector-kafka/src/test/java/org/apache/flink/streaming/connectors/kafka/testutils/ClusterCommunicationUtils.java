@@ -18,12 +18,13 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.apache.flink.api.common.JobID;
 import org.apache.flink.client.program.ClusterClient;
 import org.apache.flink.runtime.client.JobStatusMessage;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /** Utilities for communicating with a cluster through a {@link ClusterClient}. */
 public class ClusterCommunicationUtils {

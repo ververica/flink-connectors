@@ -17,13 +17,14 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import org.apache.flink.annotation.Internal;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import org.apache.flink.annotation.Internal;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * Base class for all partition discoverers.

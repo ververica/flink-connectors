@@ -18,13 +18,14 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /** Tests for the {@link KafkaTopicPartition}. */
 public class KafkaTopicPartitionTest {

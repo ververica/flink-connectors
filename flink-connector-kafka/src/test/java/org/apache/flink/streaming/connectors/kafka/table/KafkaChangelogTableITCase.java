@@ -18,14 +18,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.readLines;
-import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.waitingExpectedResults;
-
-import java.time.Duration;
-import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.configuration.Configuration;
@@ -36,9 +28,19 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkFixedPartitioner;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
 import org.apache.flink.table.api.TableResult;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.Duration;
+import java.time.ZoneId;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.readLines;
+import static org.apache.flink.streaming.connectors.kafka.table.KafkaTableTestUtils.waitingExpectedResults;
 
 /** IT cases for Kafka with changelog format for Table API & SQL. */
 public class KafkaChangelogTableITCase extends KafkaTableTestBase {

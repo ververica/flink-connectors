@@ -18,19 +18,21 @@
 
 package org.apache.flink.connector.kafka.source.reader.deserializer;
 
-import java.io.IOException;
-import java.util.Map;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.typeutils.TypeExtractor;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.InstantiationUtil;
 import org.apache.flink.util.TemporaryClassLoaderContext;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.Configurable;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.Map;
 
 /** A package private class to wrap {@link Deserializer}. */
 class KafkaValueOnlyDeserializerWrapper<T> implements KafkaRecordDeserializationSchema<T> {

@@ -17,18 +17,20 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
+import org.apache.flink.api.common.serialization.SerializationSchema;
+import org.apache.flink.util.InstantiationUtil;
+import org.apache.flink.util.TemporaryClassLoaderContext;
+
+import org.apache.kafka.common.Configurable;
+import org.apache.kafka.common.serialization.Serializer;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.function.Function;
-import org.apache.flink.api.common.serialization.SerializationSchema;
-import org.apache.flink.util.InstantiationUtil;
-import org.apache.flink.util.TemporaryClassLoaderContext;
-import org.apache.kafka.common.Configurable;
-import org.apache.kafka.common.serialization.Serializer;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 class KafkaSerializerWrapper<IN> implements SerializationSchema<IN> {
     private final Class<? extends Serializer<? super IN>> serializerClass;

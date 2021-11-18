@@ -17,12 +17,13 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.util.Collections;
-import java.util.Optional;
 import org.apache.flink.api.common.typeutils.SerializerTestBase;
 import org.apache.flink.api.common.typeutils.TypeSerializer;
 import org.apache.flink.streaming.api.functions.sink.TwoPhaseCommitSinkFunction;
 import org.apache.flink.streaming.api.functions.sink.TwoPhaseCommitSinkFunction.TransactionHolder;
+
+import java.util.Collections;
+import java.util.Optional;
 
 /** A test for the {@link TypeSerializer TypeSerializers} used for the Kafka producer state. */
 public class FlinkKafkaProducerStateSerializerTest

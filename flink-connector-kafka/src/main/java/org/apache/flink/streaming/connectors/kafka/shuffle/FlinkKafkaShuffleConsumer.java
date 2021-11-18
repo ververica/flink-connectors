@@ -17,10 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PRODUCER_PARALLELISM;
-
-import java.util.Map;
-import java.util.Properties;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.serialization.TypeInformationSerializationSchema;
@@ -35,6 +31,11 @@ import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartition
 import org.apache.flink.util.Preconditions;
 import org.apache.flink.util.PropertiesUtil;
 import org.apache.flink.util.SerializedValue;
+
+import java.util.Map;
+import java.util.Properties;
+
+import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PRODUCER_PARALLELISM;
 
 /** Flink Kafka Shuffle Consumer Function. */
 @Internal

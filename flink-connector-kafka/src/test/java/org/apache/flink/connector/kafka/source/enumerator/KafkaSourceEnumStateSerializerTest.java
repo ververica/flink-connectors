@@ -18,7 +18,12 @@
 
 package org.apache.flink.connector.kafka.source.enumerator;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.flink.connector.base.source.utils.SerdeUtils;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplitSerializer;
+
+import org.apache.kafka.common.TopicPartition;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -26,11 +31,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import org.apache.flink.connector.base.source.utils.SerdeUtils;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplitSerializer;
-import org.apache.kafka.common.TopicPartition;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /** Test for {@link KafkaSourceEnumStateSerializer}. */
 public class KafkaSourceEnumStateSerializerTest {

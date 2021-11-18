@@ -17,13 +17,14 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static java.util.Objects.requireNonNull;
+import org.apache.flink.annotation.PublicEvolving;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import org.apache.flink.annotation.PublicEvolving;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * Flink's description of a partition in a Kafka topic. Serializable, and common across all Kafka
