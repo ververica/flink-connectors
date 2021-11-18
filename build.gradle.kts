@@ -1,8 +1,8 @@
 plugins {
-//    id("org.nosphere.apache.rat") version "0.5.2"
     java
     `maven-publish`
     id("com.diffplug.spotless") version "6.0.0" apply false
+    id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group = "org.apache.flink.connectors"
@@ -21,6 +21,7 @@ subprojects {
     apply(plugin = "maven-publish")
     apply(plugin = "checkstyle")
     apply(plugin = "com.diffplug.spotless")
+    apply(plugin = "com.github.johnrengelman.shadow")
 
     repositories {
         mavenCentral()
