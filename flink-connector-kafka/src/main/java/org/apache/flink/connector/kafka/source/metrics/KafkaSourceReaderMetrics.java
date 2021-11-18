@@ -24,8 +24,6 @@ import org.apache.flink.metrics.Counter;
 import org.apache.flink.metrics.MetricGroup;
 import org.apache.flink.metrics.groups.OperatorIOMetricGroup;
 import org.apache.flink.metrics.groups.SourceReaderMetricGroup;
-import org.apache.flink.runtime.metrics.MetricNames;
-import org.apache.flink.runtime.metrics.groups.TaskIOMetricGroup;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.Metric;
@@ -195,8 +193,8 @@ public class KafkaSourceReaderMetrics {
             LOG.warn(
                     String.format(
                             "Error when getting Kafka consumer metric \"%s\". "
-                                    + "I/O metric \"%s\" will not be reported. ",
-                            BYTES_CONSUMED_TOTAL, MetricNames.IO_NUM_BYTES_IN),
+                                    + "I/O metric numBytesIn will not be reported. ",
+                            BYTES_CONSUMED_TOTAL),
                     e);
         }
     }
@@ -307,8 +305,8 @@ public class KafkaSourceReaderMetrics {
                     String.format(
                             "Error when getting Kafka consumer metric \"%s\" "
                                     + "for partition \"%s\". "
-                                    + "Metric \"%s\" may not be reported correctly. ",
-                            RECORDS_LAG, tp, MetricNames.PENDING_BYTES),
+                                    + "Metric pendingBytes may not be reported correctly. ",
+                            RECORDS_LAG, tp),
                     e);
             return null;
         }
