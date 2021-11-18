@@ -13,6 +13,8 @@ val isCiServer = System.getenv().containsKey("CI")
     configure<com.gradle.scan.plugin.BuildScanExtension> {
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
         termsOfServiceAgree = "yes"
+
+        publishAlways()
     }
 //}
 
