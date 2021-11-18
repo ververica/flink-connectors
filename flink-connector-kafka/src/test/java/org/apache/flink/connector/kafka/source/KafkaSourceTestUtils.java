@@ -18,11 +18,12 @@
 
 package org.apache.flink.connector.kafka.source;
 
-import java.util.Collection;
-import java.util.function.Consumer;
 import org.apache.flink.api.connector.source.SourceReaderContext;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.connector.kafka.source.reader.KafkaSourceReader;
+
+import java.util.Collection;
+import java.util.function.Consumer;
 
 /** Utility class for testing {@link KafkaSource}. */
 public class KafkaSourceTestUtils {

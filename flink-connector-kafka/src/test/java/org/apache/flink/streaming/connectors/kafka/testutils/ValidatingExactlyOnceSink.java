@@ -18,17 +18,19 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
 import org.apache.flink.api.common.state.CheckpointListener;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 import org.apache.flink.test.util.SuccessException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
 
 /** A {@link RichSinkFunction} that verifies that no duplicate records are generated. */
 public class ValidatingExactlyOnceSink extends RichSinkFunction<Integer>

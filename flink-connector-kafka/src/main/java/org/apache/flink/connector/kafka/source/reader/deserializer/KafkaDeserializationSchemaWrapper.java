@@ -18,12 +18,14 @@
 
 package org.apache.flink.connector.kafka.source.reader.deserializer;
 
-import java.io.IOException;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.util.Collector;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.io.IOException;
 
 /**
  * A wrapper class that wraps a {@link

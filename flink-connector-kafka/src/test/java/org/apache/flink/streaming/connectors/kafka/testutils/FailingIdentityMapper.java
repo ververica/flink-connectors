@@ -18,14 +18,16 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.Collections;
-import java.util.List;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.common.state.CheckpointListener;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A {@link RichMapFunction} that fails after the configured number of records have been processed.

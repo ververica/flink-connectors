@@ -17,13 +17,14 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import javax.annotation.Nullable;
 
 import java.io.Closeable;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * Aborts lingering transactions on restart.

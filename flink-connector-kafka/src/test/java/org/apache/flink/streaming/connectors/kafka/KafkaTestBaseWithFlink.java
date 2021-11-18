@@ -19,6 +19,7 @@ package org.apache.flink.streaming.connectors.kafka;
 
 import org.apache.flink.runtime.testutils.MiniClusterResourceConfiguration;
 import org.apache.flink.test.util.MiniClusterWithClientResource;
+
 import org.junit.ClassRule;
 
 /** The base for the Kafka tests with Flink's MiniCluster. */

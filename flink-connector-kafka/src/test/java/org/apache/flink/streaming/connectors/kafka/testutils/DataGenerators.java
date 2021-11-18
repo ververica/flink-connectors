@@ -18,10 +18,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.testutils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-import java.util.Random;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.RichFunction;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
@@ -40,6 +36,11 @@ import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkFixedPartiti
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
 import org.apache.flink.streaming.runtime.streamrecord.StreamRecord;
 import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 
 /** Test data generators. */
 @SuppressWarnings("serial")

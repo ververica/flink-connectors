@@ -28,6 +28,7 @@ import org.apache.flink.connectors.test.common.testsuites.SourceTestSuiteBase;
 import org.apache.flink.tests.util.TestUtils;
 import org.apache.flink.tests.util.flink.FlinkContainerTestEnvironment;
 import org.apache.flink.util.DockerImageVersions;
+
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.utility.DockerImageName;
 

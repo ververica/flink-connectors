@@ -18,11 +18,12 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.initializer;
 
+import org.apache.kafka.clients.consumer.OffsetResetStrategy;
+import org.apache.kafka.common.TopicPartition;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.kafka.clients.consumer.OffsetResetStrategy;
-import org.apache.kafka.common.TopicPartition;
 
 /**
  * An implementation of {@link OffsetsInitializer} to initialize the offsets based on a timestamp.

@@ -17,12 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
-
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Properties;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.serialization.TypeInformationSerializationSchema;
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
@@ -32,12 +26,20 @@ import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
 import org.apache.flink.streaming.util.OperatorSnapshotUtil;
 import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
 import org.apache.flink.testutils.migration.MigrationVersion;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Properties;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 /** The base class with migration tests for the Kafka Exactly-Once Producer. */
 @SuppressWarnings("serial")

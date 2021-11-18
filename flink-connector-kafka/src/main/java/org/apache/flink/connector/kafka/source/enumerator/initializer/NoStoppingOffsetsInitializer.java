@@ -18,12 +18,14 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.initializer;
 
+import org.apache.flink.annotation.Internal;
+
+import org.apache.kafka.clients.consumer.OffsetResetStrategy;
+import org.apache.kafka.common.TopicPartition;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
-import org.apache.flink.annotation.Internal;
-import org.apache.kafka.clients.consumer.OffsetResetStrategy;
-import org.apache.kafka.common.TopicPartition;
 
 /**
  * An implementation of {@link OffsetsInitializer} which does not initialize anything.

@@ -17,10 +17,11 @@
 
 package org.apache.flink.connector.kafka.sink;
 
+import javax.annotation.Nullable;
+
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
 /**
  * This class holds the necessary information to construct a new {@link FlinkKafkaInternalProducer}

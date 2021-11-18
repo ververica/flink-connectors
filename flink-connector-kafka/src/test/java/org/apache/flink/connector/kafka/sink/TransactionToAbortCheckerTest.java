@@ -17,14 +17,17 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.apache.flink.util.TestLogger;
+
+import org.apache.flink.shaded.guava30.com.google.common.collect.ImmutableMap;
+
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
-import org.apache.flink.shaded.guava30.com.google.common.collect.ImmutableMap;
-import org.apache.flink.util.TestLogger;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /** Tests for {@link TransactionsToAbortChecker}. */
 public class TransactionToAbortCheckerTest extends TestLogger {

@@ -17,12 +17,13 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.apache.flink.util.Preconditions.checkArgument;
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import org.apache.flink.annotation.Internal;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.flink.annotation.Internal;
+
+import static org.apache.flink.util.Preconditions.checkArgument;
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * Class responsible for generating transactional ids to use when communicating with Kafka.

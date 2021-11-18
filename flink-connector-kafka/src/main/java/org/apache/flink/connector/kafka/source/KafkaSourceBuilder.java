@@ -18,8 +18,19 @@
 
 package org.apache.flink.connector.kafka.source;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
+import org.apache.flink.api.common.serialization.DeserializationSchema;
+import org.apache.flink.api.connector.source.Boundedness;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.NoStoppingOffsetsInitializer;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializerValidator;
+import org.apache.flink.connector.kafka.source.enumerator.subscriber.KafkaSubscriber;
+import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -29,18 +40,9 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.apache.flink.api.common.serialization.DeserializationSchema;
-import org.apache.flink.api.connector.source.Boundedness;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.NoStoppingOffsetsInitializer;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializerValidator;
-import org.apache.flink.connector.kafka.source.enumerator.subscriber.KafkaSubscriber;
-import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * The @builder class for {@link KafkaSource} to make it easier for the users to construct a {@link

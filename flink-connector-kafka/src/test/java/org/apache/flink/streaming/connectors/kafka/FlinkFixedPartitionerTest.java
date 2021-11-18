@@ -19,6 +19,7 @@
 package org.apache.flink.streaming.connectors.kafka;
 
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkFixedPartitioner;
+
 import org.junit.Assert;
 import org.junit.Test;
 

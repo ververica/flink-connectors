@@ -18,10 +18,11 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.subscriber;
 
-import java.util.Map;
-import java.util.Set;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.TopicDescription;
+
+import java.util.Map;
+import java.util.Set;
 
 /** The base implementations of {@link KafkaSubscriber}. */
 class KafkaSubscriberUtils {

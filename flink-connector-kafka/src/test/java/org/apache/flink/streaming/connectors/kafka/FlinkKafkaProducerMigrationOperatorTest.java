@@ -18,11 +18,13 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.util.Arrays;
-import java.util.Collection;
 import org.apache.flink.testutils.migration.MigrationVersion;
+
 import org.junit.Ignore;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Migration test from FlinkKafkaProducer011 operator. This test depends on the resource generated

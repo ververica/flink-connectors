@@ -17,13 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import kafka.server.KafkaServer;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.connector.kafka.source.KafkaSourceBuilder;
@@ -34,7 +27,16 @@ import org.apache.flink.streaming.api.operators.StreamSink;
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaDeserializationSchemaWrapper;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
 import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
+
+import kafka.server.KafkaServer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /** Abstract class providing a Kafka test environment. */
 public abstract class KafkaTestEnvironment {

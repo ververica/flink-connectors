@@ -17,12 +17,13 @@
 
 package org.apache.flink.connector.kafka.sink;
 
+import org.apache.flink.core.io.SimpleVersionedSerializer;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import org.apache.flink.core.io.SimpleVersionedSerializer;
 
 /** A serializer used to serialize {@link KafkaWriterState}. */
 class KafkaWriterStateSerializer implements SimpleVersionedSerializer<KafkaWriterState> {

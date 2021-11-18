@@ -17,10 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import org.apache.flink.api.connector.sink.Committer;
 import org.apache.flink.api.connector.sink.GlobalCommitter;
 import org.apache.flink.api.connector.sink.Sink;
@@ -28,6 +24,11 @@ import org.apache.flink.api.connector.sink.SinkWriter;
 import org.apache.flink.core.io.SimpleVersionedSerializer;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.types.DataType;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * A wrapper of a {@link Sink}. It will buffer the data emitted by the wrapper {@link SinkWriter}

@@ -17,11 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PARTITION_NUMBER;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Properties;
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.api.common.typeutils.TypeSerializer;
 import org.apache.flink.api.java.functions.KeySelector;
@@ -32,7 +27,14 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaException;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.util.Preconditions;
 import org.apache.flink.util.PropertiesUtil;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Properties;
+
+import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PARTITION_NUMBER;
 
 /**
  * Flink Kafka Shuffle Producer Function. It is different from {@link FlinkKafkaProducer} in the way

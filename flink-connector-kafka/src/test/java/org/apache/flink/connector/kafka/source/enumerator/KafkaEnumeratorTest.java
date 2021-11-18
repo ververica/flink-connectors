@@ -18,9 +18,26 @@
 
 package org.apache.flink.connector.kafka.source.enumerator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.apache.flink.api.connector.source.Boundedness;
+import org.apache.flink.api.connector.source.ReaderInfo;
+import org.apache.flink.api.connector.source.mocks.MockSplitEnumeratorContext;
+import org.apache.flink.connector.kafka.source.KafkaSourceOptions;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.NoStoppingOffsetsInitializer;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
+import org.apache.flink.connector.kafka.source.enumerator.subscriber.KafkaSubscriber;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
+import org.apache.flink.connector.kafka.source.testutils.KafkaSourceTestEnv;
+import org.apache.flink.mock.Whitebox;
+
+import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.serialization.StringDeserializer;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,25 +51,10 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
-import org.apache.flink.api.connector.source.Boundedness;
-import org.apache.flink.api.connector.source.ReaderInfo;
-import org.apache.flink.api.connector.source.mocks.MockSplitEnumeratorContext;
-import org.apache.flink.connector.kafka.source.KafkaSourceOptions;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.NoStoppingOffsetsInitializer;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
-import org.apache.flink.connector.kafka.source.enumerator.subscriber.KafkaSubscriber;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
-import org.apache.flink.connector.kafka.source.testutils.KafkaSourceTestEnv;
-import org.apache.flink.mock.Whitebox;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.NewTopic;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /** Unit tests for {@link KafkaSourceEnumerator}. */
 public class KafkaEnumeratorTest {

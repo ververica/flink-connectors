@@ -17,11 +17,13 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.flink.util.TestLogger;
+
+import org.junit.Test;
 
 import java.io.IOException;
-import org.apache.flink.util.TestLogger;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests for serializing and deserialzing {@link KafkaWriterState} with {@link

@@ -18,18 +18,20 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.initializer;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Map;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
+
 import org.apache.kafka.clients.admin.KafkaAdminClient;
 import org.apache.kafka.clients.admin.ListConsumerGroupOffsetsOptions;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
 import org.apache.kafka.clients.consumer.OffsetResetStrategy;
 import org.apache.kafka.common.TopicPartition;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * A interface for users to specify the starting / stopping offset of a {@link KafkaPartitionSplit}.

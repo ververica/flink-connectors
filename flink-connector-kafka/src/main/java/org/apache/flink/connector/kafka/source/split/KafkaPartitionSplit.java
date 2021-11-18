@@ -18,14 +18,16 @@
 
 package org.apache.flink.connector.kafka.source.split;
 
+import org.apache.flink.api.connector.source.SourceSplit;
+import org.apache.flink.util.FlinkRuntimeException;
+
+import org.apache.kafka.common.TopicPartition;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import org.apache.flink.api.connector.source.SourceSplit;
-import org.apache.flink.util.FlinkRuntimeException;
-import org.apache.kafka.common.TopicPartition;
 
 /** A {@link SourceSplit} for a Kafka partition. */
 public class KafkaPartitionSplit implements SourceSplit {

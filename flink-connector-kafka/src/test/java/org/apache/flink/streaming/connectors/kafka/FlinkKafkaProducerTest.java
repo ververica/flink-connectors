@@ -18,20 +18,23 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
-
-import java.util.Optional;
-import java.util.Properties;
-import javax.annotation.Nullable;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.api.common.typeutils.base.IntSerializer;
 import org.apache.flink.runtime.jobgraph.OperatorID;
 import org.apache.flink.streaming.api.operators.StreamSink;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkKafkaPartitioner;
 import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
+
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.junit.Test;
+
+import javax.annotation.Nullable;
+
+import java.util.Optional;
+import java.util.Properties;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 /** Tests for {@link FlinkKafkaProducer}. */
 public class FlinkKafkaProducerTest {

@@ -17,8 +17,9 @@
 
 package org.apache.flink.streaming.connectors.kafka.partitioner;
 
-import java.io.Serializable;
 import org.apache.flink.annotation.PublicEvolving;
+
+import java.io.Serializable;
 
 /**
  * A {@link FlinkKafkaPartitioner} wraps logic on how to partition records across partitions of

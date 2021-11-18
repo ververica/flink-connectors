@@ -18,7 +18,7 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static java.util.Objects.requireNonNull;
+import org.apache.flink.annotation.Internal;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -29,7 +29,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import org.apache.flink.annotation.Internal;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * A special form of blocking queue with two additions:

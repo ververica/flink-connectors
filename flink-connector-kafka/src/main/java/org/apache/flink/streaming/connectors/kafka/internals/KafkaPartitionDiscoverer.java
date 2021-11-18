@@ -17,15 +17,17 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import org.apache.flink.annotation.Internal;
+
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.PartitionInfo;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import org.apache.flink.annotation.Internal;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.PartitionInfo;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * A partition discoverer that can be used to discover topics and partitions metadata from Kafka

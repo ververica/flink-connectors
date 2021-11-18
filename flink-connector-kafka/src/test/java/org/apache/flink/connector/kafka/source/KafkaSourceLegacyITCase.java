@@ -22,6 +22,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.streaming.connectors.kafka.KafkaConsumerTestBase;
 import org.apache.flink.streaming.connectors.kafka.KafkaProducerTestBase;
 import org.apache.flink.streaming.connectors.kafka.KafkaTestEnvironmentImpl;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 

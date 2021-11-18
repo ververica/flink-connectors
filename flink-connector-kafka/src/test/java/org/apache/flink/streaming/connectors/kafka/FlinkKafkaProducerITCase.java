@@ -17,25 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import static org.apache.flink.util.ExceptionUtils.findThrowable;
-import static org.apache.flink.util.Preconditions.checkState;
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.startsWith;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import kafka.server.KafkaServer;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.serialization.TypeInformationSerializationSchema;
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
@@ -47,9 +28,30 @@ import org.apache.flink.streaming.connectors.kafka.internals.KeyedSerializationS
 import org.apache.flink.streaming.util.AbstractStreamOperatorTestHarness;
 import org.apache.flink.streaming.util.OneInputStreamOperatorTestHarness;
 import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
+
+import kafka.server.KafkaServer;
 import org.apache.kafka.common.errors.ProducerFencedException;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.apache.flink.util.ExceptionUtils.findThrowable;
+import static org.apache.flink.util.Preconditions.checkState;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.startsWith;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * IT cases for the {@link FlinkKafkaProducer}.

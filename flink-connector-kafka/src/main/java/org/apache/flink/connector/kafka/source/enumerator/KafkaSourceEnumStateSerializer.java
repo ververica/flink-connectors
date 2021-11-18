@@ -18,6 +18,13 @@
 
 package org.apache.flink.connector.kafka.source.enumerator;
 
+import org.apache.flink.connector.base.source.utils.SerdeUtils;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
+import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplitSerializer;
+import org.apache.flink.core.io.SimpleVersionedSerializer;
+
+import org.apache.kafka.common.TopicPartition;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -27,11 +34,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import org.apache.flink.connector.base.source.utils.SerdeUtils;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplit;
-import org.apache.flink.connector.kafka.source.split.KafkaPartitionSplitSerializer;
-import org.apache.flink.core.io.SimpleVersionedSerializer;
-import org.apache.kafka.common.TopicPartition;
 
 /**
  * The {@link org.apache.flink.core.io.SimpleVersionedSerializer Serializer} for the enumerator

@@ -17,17 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.PropertiesUtil.getBoolean;
-import static org.apache.flink.util.PropertiesUtil.getLong;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.regex.Pattern;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
@@ -43,11 +32,24 @@ import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartition
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicsDescriptor;
 import org.apache.flink.util.PropertiesUtil;
 import org.apache.flink.util.SerializedValue;
+
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.regex.Pattern;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.PropertiesUtil.getBoolean;
+import static org.apache.flink.util.PropertiesUtil.getLong;
 
 /**
  * The Flink Kafka Consumer is a streaming data source that pulls a parallel data stream from Apache

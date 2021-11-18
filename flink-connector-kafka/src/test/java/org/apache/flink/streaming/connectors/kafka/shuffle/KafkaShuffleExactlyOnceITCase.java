@@ -17,11 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
-import static org.apache.flink.streaming.api.TimeCharacteristic.IngestionTime;
-import static org.apache.flink.streaming.api.TimeCharacteristic.ProcessingTime;
-import static org.apache.flink.test.util.TestUtils.tryExecute;
-
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.api.java.tuple.Tuple;
@@ -31,9 +26,15 @@ import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.testutils.FailingIdentityMapper;
 import org.apache.flink.streaming.connectors.kafka.testutils.ValidatingExactlyOnceSink;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+
+import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
+import static org.apache.flink.streaming.api.TimeCharacteristic.IngestionTime;
+import static org.apache.flink.streaming.api.TimeCharacteristic.ProcessingTime;
+import static org.apache.flink.test.util.TestUtils.tryExecute;
 
 /** Failure Recovery IT Test for KafkaShuffle. */
 public class KafkaShuffleExactlyOnceITCase extends KafkaShuffleTestBase {

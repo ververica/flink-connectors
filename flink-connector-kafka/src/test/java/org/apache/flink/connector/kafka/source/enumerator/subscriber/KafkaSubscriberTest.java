@@ -18,9 +18,15 @@
 
 package org.apache.flink.connector.kafka.source.enumerator.subscriber;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import org.apache.flink.connector.kafka.source.testutils.KafkaSourceTestEnv;
+import org.apache.flink.util.ExceptionUtils;
+
+import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.errors.UnknownTopicOrPartitionException;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,14 +34,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.apache.flink.connector.kafka.source.testutils.KafkaSourceTestEnv;
-import org.apache.flink.util.ExceptionUtils;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.errors.UnknownTopicOrPartitionException;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
 /** Unit tests for {@link KafkaSubscriber}. */
 public class KafkaSubscriberTest {

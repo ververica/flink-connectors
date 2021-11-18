@@ -17,31 +17,12 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
-import static org.apache.flink.streaming.api.TimeCharacteristic.IngestionTime;
-import static org.apache.flink.streaming.api.TimeCharacteristic.ProcessingTime;
-import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PARTITION_NUMBER;
-import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PRODUCER_PARALLELISM;
-import static org.apache.flink.test.util.TestUtils.tryExecute;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
 import org.apache.flink.api.common.typeutils.TypeSerializer;
 import org.apache.flink.api.java.tuple.Tuple;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.api.java.typeutils.TupleTypeInfo;
-import org.apache.flink.shaded.guava30.com.google.common.collect.Iterables;
-import org.apache.flink.shaded.guava30.com.google.common.collect.Lists;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
@@ -52,10 +33,32 @@ import org.apache.flink.streaming.connectors.kafka.internals.KafkaShuffleFetcher
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaShuffleFetcher.KafkaShuffleRecord;
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaShuffleFetcher.KafkaShuffleWatermark;
 import org.apache.flink.util.PropertiesUtil;
+
+import org.apache.flink.shaded.guava30.com.google.common.collect.Iterables;
+import org.apache.flink.shaded.guava30.com.google.common.collect.Lists;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
+import static org.apache.flink.streaming.api.TimeCharacteristic.IngestionTime;
+import static org.apache.flink.streaming.api.TimeCharacteristic.ProcessingTime;
+import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PARTITION_NUMBER;
+import static org.apache.flink.streaming.connectors.kafka.shuffle.FlinkKafkaShuffle.PRODUCER_PARALLELISM;
+import static org.apache.flink.test.util.TestUtils.tryExecute;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 /** Simple End to End Test for Kafka. */
 public class KafkaShuffleITCase extends KafkaShuffleTestBase {

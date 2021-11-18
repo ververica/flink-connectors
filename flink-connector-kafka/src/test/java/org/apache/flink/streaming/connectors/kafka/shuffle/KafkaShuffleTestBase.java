@@ -17,9 +17,6 @@
 
 package org.apache.flink.streaming.connectors.kafka.shuffle;
 
-import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
-
-import java.util.Random;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple;
@@ -41,7 +38,12 @@ import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartition
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartitionAssigner;
 import org.apache.flink.test.util.SuccessException;
 import org.apache.flink.util.Collector;
+
 import org.junit.BeforeClass;
+
+import java.util.Random;
+
+import static org.apache.flink.streaming.api.TimeCharacteristic.EventTime;
 
 /** Base Test Class for KafkaShuffle. */
 public class KafkaShuffleTestBase extends KafkaConsumerTestBase {

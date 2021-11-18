@@ -18,10 +18,6 @@
 
 package org.apache.flink.connector.kafka.source.testutils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.regex.Pattern;
 import org.apache.flink.api.connector.source.Boundedness;
 import org.apache.flink.api.connector.source.Source;
 import org.apache.flink.connector.kafka.source.KafkaSource;
@@ -30,9 +26,15 @@ import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsIni
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
 import org.apache.flink.connectors.test.common.external.ExternalContext;
 import org.apache.flink.connectors.test.common.external.SourceSplitDataWriter;
+
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.testcontainers.containers.KafkaContainer;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.regex.Pattern;
 
 /**
  * Kafka external context that will create multiple topics with only one partitions as source

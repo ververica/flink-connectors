@@ -17,17 +17,9 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.ExceptionUtils.firstOrSuppressed;
-
-import java.io.Closeable;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
-import javax.annotation.Nullable;
 import org.apache.flink.api.connector.sink.Committer;
 import org.apache.flink.util.FlinkRuntimeException;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.errors.InvalidTxnStateException;
 import org.apache.kafka.common.errors.ProducerFencedException;
@@ -35,6 +27,17 @@ import org.apache.kafka.common.errors.RetriableException;
 import org.apache.kafka.common.errors.UnknownProducerIdException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.Nullable;
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
+
+import static org.apache.flink.util.ExceptionUtils.firstOrSuppressed;
 
 /**
  * Committer implementation for {@link KafkaSink}

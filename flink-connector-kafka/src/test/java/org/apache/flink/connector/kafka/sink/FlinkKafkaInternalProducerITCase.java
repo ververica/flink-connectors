@@ -17,17 +17,8 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
-import static org.apache.flink.util.DockerImageVersions.KAFKA;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-
-import java.time.Duration;
-import java.util.List;
-import java.util.Properties;
-import java.util.stream.Collectors;
 import org.apache.flink.util.TestLogger;
+
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -43,6 +34,17 @@ import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Properties;
+import java.util.stream.Collectors;
+
+import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
+import static org.apache.flink.util.DockerImageVersions.KAFKA;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 
 @Testcontainers
 class FlinkKafkaInternalProducerITCase extends TestLogger {

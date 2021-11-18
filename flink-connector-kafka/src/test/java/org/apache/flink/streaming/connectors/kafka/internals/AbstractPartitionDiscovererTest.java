@@ -18,9 +18,11 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.apache.flink.streaming.connectors.kafka.testutils.TestPartitionDiscoverer;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,10 +32,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-import org.apache.flink.streaming.connectors.kafka.testutils.TestPartitionDiscoverer;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Tests that the partition assignment in the partition discoverer is deterministic and stable, with

@@ -48,6 +48,9 @@ subprojects {
     configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         java {
             googleJavaFormat("1.7").aosp()
+            // "" refers to all third party dependencies and "\\#" captures the static imports
+            importOrder("org.apache.flink","org.apache.flink.shaded","","javax","java","scala","\\#")
+            removeUnusedImports()
         }
     }
 }

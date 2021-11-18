@@ -18,7 +18,6 @@
 
 package org.apache.flink.streaming.util.serialization;
 
-import java.io.IOException;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -29,7 +28,10 @@ import org.apache.flink.api.java.typeutils.TypeExtractor;
 import org.apache.flink.core.memory.DataInputDeserializer;
 import org.apache.flink.core.memory.DataOutputSerializer;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import java.io.IOException;
 
 /**
  * A serialization and deserialization schema for Key Value Pairs that uses Flink's serialization

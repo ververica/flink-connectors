@@ -18,10 +18,11 @@
 
 package org.apache.flink.connector.kafka.source;
 
-import java.util.Properties;
-import java.util.function.Function;
 import org.apache.flink.configuration.ConfigOption;
 import org.apache.flink.configuration.ConfigOptions;
+
+import java.util.Properties;
+import java.util.function.Function;
 
 /** Configurations for KafkaSource. */
 public class KafkaSourceOptions {

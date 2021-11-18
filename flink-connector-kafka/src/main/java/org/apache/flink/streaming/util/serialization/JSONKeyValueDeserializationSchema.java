@@ -17,15 +17,17 @@
 
 package org.apache.flink.streaming.util.serialization;
 
-import static org.apache.flink.api.java.typeutils.TypeExtractor.getForClass;
-
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
+
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.JsonNode;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.node.ObjectNode;
-import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import static org.apache.flink.api.java.typeutils.TypeExtractor.getForClass;
 
 /**
  * DeserializationSchema that deserializes a JSON String into an ObjectNode.

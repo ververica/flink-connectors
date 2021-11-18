@@ -18,9 +18,11 @@
 
 package org.apache.flink.streaming.connectors.kafka.internals;
 
-import java.util.concurrent.atomic.AtomicReference;
-import javax.annotation.Nullable;
 import org.apache.flink.annotation.Internal;
+
+import javax.annotation.Nullable;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A proxy that communicates exceptions between threads. Typically used if an exception from a

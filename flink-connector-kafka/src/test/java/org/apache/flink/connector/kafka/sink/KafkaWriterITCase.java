@@ -17,27 +17,6 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
-import static org.apache.flink.connector.kafka.sink.KafkaUtil.drainAllRecordsFromTopic;
-import static org.apache.flink.util.DockerImageVersions.KAFKA;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.sameInstance;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.PriorityQueue;
-import java.util.Properties;
-import java.util.stream.IntStream;
 import org.apache.flink.api.common.operators.MailboxExecutor;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.api.connector.sink.Sink;
@@ -53,9 +32,11 @@ import org.apache.flink.metrics.testutils.MetricListener;
 import org.apache.flink.runtime.mailbox.SyncMailboxExecutor;
 import org.apache.flink.runtime.metrics.groups.InternalSinkWriterMetricGroup;
 import org.apache.flink.runtime.metrics.groups.UnregisteredMetricGroups;
-import org.apache.flink.shaded.guava30.com.google.common.collect.ImmutableList;
 import org.apache.flink.util.TestLogger;
 import org.apache.flink.util.UserCodeClassLoader;
+
+import org.apache.flink.shaded.guava30.com.google.common.collect.ImmutableList;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
@@ -71,6 +52,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.Network;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.PriorityQueue;
+import java.util.Properties;
+import java.util.stream.IntStream;
+
+import static org.apache.flink.connector.kafka.sink.KafkaUtil.createKafkaContainer;
+import static org.apache.flink.connector.kafka.sink.KafkaUtil.drainAllRecordsFromTopic;
+import static org.apache.flink.util.DockerImageVersions.KAFKA;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.sameInstance;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /** Tests for the standalone KafkaWriter. */
 public class KafkaWriterITCase extends TestLogger {

@@ -18,6 +18,16 @@
 
 package org.apache.flink.streaming.connectors.kafka.table;
 
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.table.api.DataTypes;
+import org.apache.flink.table.api.ValidationException;
+import org.apache.flink.table.types.DataType;
+
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.apache.flink.streaming.connectors.kafka.table.KafkaConnectorOptionsUtil.createKeyFormatProjection;
 import static org.apache.flink.streaming.connectors.kafka.table.KafkaConnectorOptionsUtil.createValueFormatProjection;
 import static org.apache.flink.table.api.DataTypes.FIELD;
@@ -29,14 +39,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.junit.internal.matchers.ThrowableMessageMatcher.hasMessage;
-
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.flink.configuration.Configuration;
-import org.apache.flink.table.api.DataTypes;
-import org.apache.flink.table.api.ValidationException;
-import org.apache.flink.table.types.DataType;
-import org.junit.Test;
 
 /** Test for {@link KafkaConnectorOptionsUtil}. */
 public class KafkaConnectorOptionsUtilTest {

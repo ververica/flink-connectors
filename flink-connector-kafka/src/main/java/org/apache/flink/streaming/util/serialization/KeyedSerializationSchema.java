@@ -17,9 +17,10 @@
 
 package org.apache.flink.streaming.util.serialization;
 
-import java.io.Serializable;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
+
+import java.io.Serializable;
 
 /**
  * The serialization schema describes how to turn a data object into a different serialized

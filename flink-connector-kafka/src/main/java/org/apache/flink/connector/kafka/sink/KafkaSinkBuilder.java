@@ -17,20 +17,22 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.apache.flink.util.Preconditions.checkNotNull;
-import static org.apache.flink.util.Preconditions.checkState;
-
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.Properties;
 import org.apache.flink.annotation.PublicEvolving;
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.java.ClosureCleaner;
 import org.apache.flink.connector.base.DeliveryGuarantee;
+
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.Properties;
+
+import static org.apache.flink.util.Preconditions.checkNotNull;
+import static org.apache.flink.util.Preconditions.checkState;
 
 /**
  * Builder to construct {@link KafkaSink}.

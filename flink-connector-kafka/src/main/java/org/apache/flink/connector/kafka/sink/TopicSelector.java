@@ -17,9 +17,10 @@
 
 package org.apache.flink.connector.kafka.sink;
 
+import org.apache.flink.annotation.PublicEvolving;
+
 import java.io.Serializable;
 import java.util.function.Function;
-import org.apache.flink.annotation.PublicEvolving;
 
 /**
  * Selects a topic for the incoming record.

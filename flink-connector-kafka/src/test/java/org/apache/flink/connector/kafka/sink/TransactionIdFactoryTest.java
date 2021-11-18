@@ -17,10 +17,11 @@
 
 package org.apache.flink.connector.kafka.sink;
 
-import static org.junit.Assert.assertEquals;
-
 import org.apache.flink.util.TestLogger;
+
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /** Tests for {@link TransactionalIdFactory}. */
 public class TransactionIdFactoryTest extends TestLogger {
