@@ -1,8 +1,8 @@
 plugins {
 //    id("org.nosphere.apache.rat") version "0.5.2"
-    `java-library`
-    id("com.diffplug.spotless") version "6.0.0"
-    checkstyle
+    java
+    `maven-publish`
+    id("com.diffplug.spotless") version "6.0.0" apply false
 }
 
 group = "org.apache.flink.connectors"
@@ -18,11 +18,14 @@ val isCiServer = System.getenv().containsKey("CI")
 
 subprojects {
     apply(plugin = "java-library")
+    apply(plugin = "maven-publish")
     apply(plugin = "checkstyle")
     apply(plugin = "com.diffplug.spotless")
 
     repositories {
         mavenCentral()
+        maven(url = uri("https://repo.maven.apache.org/maven2/"))
+        maven(url = uri("https://repository.apache.org/snapshots"))
     }
 
     java {
@@ -38,6 +41,16 @@ subprojects {
 
     tasks.getByName<Test>("test") {
         useJUnitPlatform()
+    }
+
+    publishing {
+        publications.create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
     }
 
     configure<CheckstyleExtension> {

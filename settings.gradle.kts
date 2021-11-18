@@ -10,7 +10,7 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.enterprise") version "3.0" apply false
+    id("com.gradle.enterprise") version "3.7.2" apply false
 }
 
 if (!gradle.startParameter.isOffline) {
