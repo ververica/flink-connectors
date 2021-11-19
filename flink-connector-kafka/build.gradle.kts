@@ -21,8 +21,8 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-all:1.3")
 }
 
-group = "org.apache.flink"
-version = "1.15-SNAPSHOT"
+group = "org.apache.flink.connector"
+version = "1.0.0"
 description = "Flink : Connectors : Kafka"
 
 tasks.create("gen-doc") {
