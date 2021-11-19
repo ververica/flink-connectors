@@ -19,3 +19,4 @@ if (!gradle.startParameter.isOffline) {
 
 rootProject.name = "flink-connectors"
 include(":flink-connector-kafka")
+include(":genDocs")

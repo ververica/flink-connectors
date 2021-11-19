@@ -25,14 +25,19 @@ import org.apache.flink.annotation.docs.Documentation;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.ConfigOption;
 import org.apache.flink.configuration.DescribedEnum;
+import org.apache.flink.configuration.description.Description;
 import org.apache.flink.configuration.description.Formatter;
-import org.apache.flink.configuration.description.*;
+import org.apache.flink.configuration.description.HtmlFormatter;
+import org.apache.flink.configuration.description.InlineElement;
+import org.apache.flink.configuration.description.TextElement;
 import org.apache.flink.util.TimeUtils;
 import org.apache.flink.util.function.ThrowingConsumer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -42,61 +47,44 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static org.apache.flink.configuration.description.TextElement.text;
-import static org.apache.flink.docs.util.Utils.escapeCharacters;
+import static org.apache.flink.docs.configuration.Utils.escapeCharacters;
 
 /** Class used for generating code based documentation of configuration parameters. */
 public class ConfigOptionsDocGenerator {
 
     private static final Logger LOG = LoggerFactory.getLogger(ConfigOptionsDocGenerator.class);
 
+    static final String GENERATED_DOCS_DIR = "./docs/layouts/shortcodes/generated";
+    static final String ROOT_DIR = "./";
+
     static final OptionsClassLocation[] LOCATIONS =
             new OptionsClassLocation[] {
-                new OptionsClassLocation("flink-core", "org.apache.flink.configuration"),
-                new OptionsClassLocation("flink-runtime", "org.apache.flink.runtime.shuffle"),
-                new OptionsClassLocation("flink-runtime", "org.apache.flink.runtime.jobgraph"),
-                new OptionsClassLocation(
-                        "flink-streaming-java", "org.apache.flink.streaming.api.environment"),
-                new OptionsClassLocation("flink-yarn", "org.apache.flink.yarn.configuration"),
-                new OptionsClassLocation(
-                        "flink-metrics/flink-metrics-prometheus",
-                        "org.apache.flink.metrics.prometheus"),
-                new OptionsClassLocation(
-                        "flink-metrics/flink-metrics-influxdb",
-                        "org.apache.flink.metrics.influxdb"),
-                new OptionsClassLocation(
-                        "flink-state-backends/flink-statebackend-rocksdb",
-                        "org.apache.flink.contrib.streaming.state"),
-                new OptionsClassLocation(
-                        "flink-table/flink-table-api-java", "org.apache.flink.table.api.config"),
-                new OptionsClassLocation("flink-python", "org.apache.flink.python"),
-                new OptionsClassLocation(
-                        "flink-kubernetes", "org.apache.flink.kubernetes.configuration"),
-                new OptionsClassLocation("flink-clients", "org.apache.flink.client.cli"),
-                new OptionsClassLocation(
-                        "flink-table/flink-sql-client", "org.apache.flink.table.client.config"),
-                new OptionsClassLocation(
-                        "flink-connectors/flink-connector-pulsar",
-                        "org.apache.flink.connector.pulsar.common.config"),
-                new OptionsClassLocation(
-                        "flink-connectors/flink-connector-pulsar",
-                        "org.apache.flink.connector.pulsar.source")
+               // new OptionsClassLocation(
+              //          "flink-connector-kafka", "org.apache.flink.connector.kafka.configuration")
+
+             new OptionsClassLocation(
+                            "buildSrc", "org.apache.flink.docs.configuration")
+
             };
 
-    static final Set<String> EXCLUSIONS =
-            new HashSet<>(
-                    Arrays.asList(
-                            "org.apache.flink.configuration.ReadableConfig",
-                            "org.apache.flink.configuration.WritableConfig",
-                            "org.apache.flink.configuration.ConfigOptions",
-                            "org.apache.flink.streaming.api.environment.CheckpointConfig",
-                            "org.apache.flink.contrib.streaming.state.PredefinedOptions",
-                            "org.apache.flink.python.PythonConfig"));
+    static final Set<String> EXCLUSIONS = new HashSet<>();
 
     static final String DEFAULT_PATH_PREFIX = "src/main/java";
 
@@ -113,6 +101,31 @@ public class ConfigOptionsDocGenerator {
                             + ">[a-zA-Z]*)(?:Options|Config|Parameters))(?:\\.java)?");
 
     private static final Formatter formatter = new HtmlFormatter();
+
+    public static void generate(String rootDir, String outputDirectory) throws IOException, ClassNotFoundException {
+        System.out.println("start generating...");
+        //String outputDirectory = GENERATED_DOCS_DIR;
+        //String rootDir = ROOT_DIR;
+        LOG.info(
+                "Searching the following locations; configured via {}#LOCATIONS:{}",
+                ConfigOptionsDocGenerator.class.getCanonicalName(),
+                Arrays.stream(LOCATIONS)
+                        .map(OptionsClassLocation::toString)
+                        .collect(Collectors.joining("\n\t", "\n\t", "")));
+        /**
+        for (OptionsClassLocation location : LOCATIONS) {
+            createTable(
+                    ROOT_DIR,
+                    location.getModule(),
+                    location.getPackage(),
+                    GENERATED_DOCS_DIR,
+                    DEFAULT_PATH_PREFIX);
+        }
+         */
+       generateCommonSection(rootDir, outputDirectory, LOCATIONS, DEFAULT_PATH_PREFIX);
+
+    }
+
     /**
      * This method generates html tables from set of classes containing {@link ConfigOption
      * ConfigOptions}.
@@ -127,8 +140,13 @@ public class ConfigOptionsDocGenerator {
      * @param args [0] output directory for the generated files [1] project root directory
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        String outputDirectory = args[0];
-        String rootDir = args[1];
+
+        System.out.println("start....");
+
+        // String outputDirectory = args[0];
+        String outputDirectory = GENERATED_DOCS_DIR;
+        // String rootDir = args[1];
+        String rootDir = ROOT_DIR;
 
         LOG.info(
                 "Searching the following locations; configured via {}#LOCATIONS:{}",
@@ -141,15 +159,10 @@ public class ConfigOptionsDocGenerator {
                 ConfigOptionsDocGenerator.class.getCanonicalName(),
                 EXCLUSIONS.stream().collect(Collectors.joining("\n\t", "\n\t", "")));
 
-        for (OptionsClassLocation location : LOCATIONS) {
-            createTable(
-                    rootDir,
-                    location.getModule(),
-                    location.getPackage(),
-                    outputDirectory,
-                    DEFAULT_PATH_PREFIX);
-        }
-
+        /**
+         * for (OptionsClassLocation location : LOCATIONS) { createTable( rootDir,
+         * location.getModule(), location.getPackage(), outputDirectory, DEFAULT_PATH_PREFIX); }
+         */
         generateCommonSection(rootDir, outputDirectory, LOCATIONS, DEFAULT_PATH_PREFIX);
     }
 

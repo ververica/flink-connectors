@@ -214,6 +214,8 @@ Kafka source exposes the following metrics in the respective [scope]({{< ref "do
 
 #### Scope of Metric
 
+{{< generated/kafka_source_monitoring_section >}}
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -442,6 +444,8 @@ Kafka sink exposes the following metrics in the respective [scope]({{< ref "docs
     </tr>
   </tbody>
 </table>
+
+{{< generated/kafka_sink_monitoring_section >}}
 
 ## Kafka Producer
 

@@ -25,8 +25,11 @@ import org.apache.flink.annotation.docs.Documentation;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.ConfigOption;
 import org.apache.flink.configuration.DescribedEnum;
-import org.apache.flink.configuration.description.*;
+import org.apache.flink.configuration.description.Description;
 import org.apache.flink.configuration.description.Formatter;
+import org.apache.flink.configuration.description.HtmlFormatter;
+import org.apache.flink.configuration.description.InlineElement;
+import org.apache.flink.configuration.description.TextElement;
 import org.apache.flink.util.TimeUtils;
 import org.apache.flink.util.function.ThrowingConsumer;
 
@@ -44,7 +47,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -97,6 +111,7 @@ public class ConfigOptionsDocGenerator {
 
         generateCommonSection(ROOT_DIR, ROOT_DIR, LOCATIONS, DEFAULT_PATH_PREFIX);
     }
+
     /**
      * This method generates html tables from set of classes containing {@link ConfigOption
      * ConfigOptions}.
@@ -111,7 +126,9 @@ public class ConfigOptionsDocGenerator {
      * @param args [0] output directory for the generated files [1] project root directory
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+
         System.out.println("start....");
+
         // String outputDirectory = args[0];
         String outputDirectory = GENERATED_DOCS_DIR;
         // String rootDir = args[1];
