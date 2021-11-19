@@ -25,3 +25,6 @@ group = "org.apache.flink"
 version = "1.15-SNAPSHOT"
 description = "Flink : Connectors : Kafka"
 
+tasks.create("gen-doc") {
+    org.apache.flink.docs.configuration.ConfigOptionsDocGenerator.generate("$rootDir" , "$rootDir/docs/layouts/shortcodes/generated")
+}
